@@ -15,7 +15,7 @@ class Square:
         self.symbol = symbol
         self.x = x
         self.y = y
-        self.constrained = 0
+        self.constrained = 0 #value of how many valid assignments it has
 
 class Graph:
     def __init__(self, inString, x, y):
@@ -23,7 +23,7 @@ class Graph:
         self.xdim = x #x-dimension
         self.ydim = y #y-dimension
         self.colors = set(()) #all colors included in the graph
-        self.eCount = 0
+        self.eCount = 0 #number of times howConstrained is calculated
         k = 0
         end = len(inString) - 1
         for i in range(x): #build graph from string
@@ -36,8 +36,8 @@ class Graph:
                     k += 1
             self.graph.append(line)
         self.colors.remove("_") #remove blank squares
-        self.squaresByConst = PriorityQueue()
-        self.count = 0
+        self.squaresByConst = PriorityQueue() #for determining order of assignment in smart approach
+        self.count = 0 #number of assignments made
         self.options = set(())
         for i in self.colors: #create a list of lower case colors available
             self.options.add(i.lower())
